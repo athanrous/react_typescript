@@ -11,6 +11,6 @@ ReactDOM.render(
     <App />,
     <Hello name="TypeScript" enthusiasmLevel={1} />
   </div>,  
-  document.getElementById('root') as HTMLElement
+  document.getElementById('root')! as HTMLElement
 );
 registerServiceWorker();

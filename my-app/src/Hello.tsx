@@ -1,25 +1,32 @@
 import * as React from 'react';
+import './Hello.css';
 
 export interface Props {
     name: string;
+    enthusiasmLevel: number;
+    
 }
   
 class Hello extends React.Component<Props, object> {
     public render() {
-      const { name } = this.props;
+      const { name, enthusiasmLevel = 1 } = this.props;
+
+      if (enthusiasmLevel <= 0) {
+        throw new Error('You could be a little more enthusiastic.');
+      }
       
       return (
         <div className="hello">
           <div className="greeting">
-            <button onClick={this.showMessage(this.props.name)}> Click me! </button>
+              Hello {name + this.getExclamationMarks(this.props.enthusiasmLevel)}
           </div>
         </div>
       );
     }
-    
-    public showMessage(name: any): any{
-        return alert("Hello user, you learn coding in" + name);
+    public getExclamationMarks(numChars: number): any {
+      return Array(numChars + 1).join('!');
     }
+    
 }
 
 export default Hello;
