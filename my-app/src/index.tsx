@@ -9,8 +9,8 @@ ReactDOM.render(
   // Render multiple elements
   <div>
     <App />,
-    <Hello name="TypeScript" enthusiasmLevel={1} />
+    <Hello name="TypeScript" enthusiasmLevel={5} />
   </div>,  
-  document.getElementById('root')! as HTMLElement
+  document.getElementById('root') as HTMLElement
 );
 registerServiceWorker();

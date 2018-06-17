@@ -3,7 +3,7 @@ import './Hello.css';
 
 export interface Props {
     name: string;
-    enthusiasmLevel: number;
+    enthusiasmLevel?: number;
     
 }
   
@@ -18,7 +18,7 @@ class Hello extends React.Component<Props, object> {
       return (
         <div className="hello">
           <div className="greeting">
-              Hello {name + this.getExclamationMarks(this.props.enthusiasmLevel)}
+              Hello {name + this.getExclamationMarks(enthusiasmLevel)}
           </div>
         </div>
       );
