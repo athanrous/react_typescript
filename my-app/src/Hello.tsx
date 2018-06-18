@@ -7,26 +7,23 @@ export interface Props {
     
 }
   
-class Hello extends React.Component<Props, object> {
-    public render() {
-      const { name, enthusiasmLevel = 1 } = this.props;
+function Hello({ name, enthusiasmLevel = 1 }: Props) {
+  if (enthusiasmLevel <= 0) {
+    throw new Error('You could be a little more enthusiastic. :D');
+  }
 
-      if (enthusiasmLevel <= 0) {
-        throw new Error('You could be a little more enthusiastic.');
-      }
-      
-      return (
-        <div className="hello">
-          <div className="greeting">
-              Hello {name + this.getExclamationMarks(enthusiasmLevel)}
-          </div>
-        </div>
-      );
-    }
-    public getExclamationMarks(numChars: number): any {
-      return Array(numChars + 1).join('!');
-    }
-    
+  return (
+    <div className="hello">
+      <div className="greeting">
+        Hello {name + getExclamationMarks(enthusiasmLevel)}
+      </div>
+    </div>
+  );
 }
 
+// helpers
+
+function getExclamationMarks(numChars: number) {
+  return Array(numChars + 1).join('!');
+}
 export default Hello;
