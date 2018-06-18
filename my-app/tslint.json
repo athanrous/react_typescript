@@ -10,7 +10,6 @@
     "interface-name":[false],
     "no-unused-variable": [
       false
-    ],
-    "no-console": [false]   
+    ]
   }
 }
