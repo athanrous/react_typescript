@@ -1,29 +1,32 @@
 import * as React from 'react';
 import './Hello.css';
 
-export interface Props {
-    name: string;
-    enthusiasmLevel?: number;
-    
-}
-  
-function Hello({ name, enthusiasmLevel = 1 }: Props) {
-  if (enthusiasmLevel <= 0) {
-    throw new Error('You could be a little more enthusiastic. :D');
+class Hello extends React.Component<any,any> {
+  constructor(props: any) {
+    super(props);
+
+    this.handleClick = this.handleClick.bind(this);
+    this.updateInputValue = this.updateInputValue.bind(this);
   }
 
-  return (
-    <div className="hello">
-      <div className="greeting">
-        Hello {name + getExclamationMarks(enthusiasmLevel)}
-      </div>
-    </div>
-  );
+  public handleClick() {
+    alert(this.state.inputfield);
+  }
+
+  public updateInputValue(evt){
+    
+    this.state={inputfield: evt.target.value};   
+
+  }
+
+  public render() {
+    return (
+      <div>
+        <input type="text" onChange={this.updateInputValue}/> 
+        <button onClick={this.handleClick}> Click </button>
+      </div>   
+    );
+  }
 }
 
-// helpers
-
-function getExclamationMarks(numChars: number) {
-  return Array(numChars + 1).join('!');
-}
 export default Hello;
