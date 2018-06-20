@@ -1,10 +1,17 @@
 import * as React from 'react';
 import './Hello.css';
 
-class Hello extends React.Component<any,any> {
-  constructor(props: any) {
-    super(props);
+export interface State {
+  inputfield: string;
+}
 
+export interface Props{
+  name: string;
+}
+
+class Hello extends React.Component<Props, State> {
+  constructor(props) {
+    super(props);
     this.handleClick = this.handleClick.bind(this);
     this.updateInputValue = this.updateInputValue.bind(this);
   }
@@ -14,16 +21,14 @@ class Hello extends React.Component<any,any> {
   }
 
   public updateInputValue(evt){
-    
     this.state={inputfield: evt.target.value};   
-
   }
 
   public render() {
     return (
       <div>
         <input type="text" onChange={this.updateInputValue}/> 
-        <button onClick={this.handleClick}> Click </button>
+        <button onClick={this.handleClick}> {this.props.name} </button>
       </div>   
     );
   }

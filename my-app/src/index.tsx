@@ -8,7 +8,7 @@ import registerServiceWorker from './registerServiceWorker';
 // To run the app please type HOST=localhost npm start
 ReactDOM.render(
   // Render multiple elements
-  <Hello />,  
+  <Hello name="My Button"/>,
   document.getElementById('root') as HTMLElement
 );
 registerServiceWorker();
