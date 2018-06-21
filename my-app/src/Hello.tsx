@@ -14,12 +14,15 @@ class Greeter extends React.Component<Props, State> {
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.updateInputValue = this.updateInputValue.bind(this);
+    this.state = {field: ''};
   }
+
   public componentDidMount() {
     this.setState({field: ''});
   }
+
   public handleClick() {
-    this.setState({field: 'button clicked'});
+    this.setState({field: this.state.field});
   }
 
   public updateInputValue(evt){
@@ -29,8 +32,8 @@ class Greeter extends React.Component<Props, State> {
   public render() {
     return (
       <div>
-        <SubjectInput name={this.props.name} onClick={this.handleClick} onChange={this.updateInputValue} />
-        <Greeting name={this.props.name} onChange={this.updateInputValue}/>
+        <SubjectInput name={this.state.field} onClick={this.handleClick} onChange={this.updateInputValue} />
+        <Greeting name={this.state.field} onChange={this.updateInputValue}/>
       </div>
     );
   }
