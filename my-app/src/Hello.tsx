@@ -2,7 +2,7 @@ import * as React from 'react';
 import './Hello.css';
 
 export interface State {
-  field: string;
+  subject: string;
 }
 
 export interface Props{
@@ -14,26 +14,26 @@ class Greeter extends React.Component<Props, State> {
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.updateInputValue = this.updateInputValue.bind(this);
-    this.state = {field: ''};
+    this.state = {subject: ''};
   }
 
   public componentDidMount() {
-    this.setState({field: ''});
+    this.setState({subject: ''});
   }
 
   public handleClick() {
-    this.setState({field: this.state.field});
+    this.setState({subject: this.state.subject});
   }
 
   public updateInputValue(evt){
-    this.state = {field: evt.target.value};
+    this.state = {subject: evt.target.value};
   }
 
   public render() {
     return (
       <div>
-        <SubjectInput name={this.state.field} onClick={this.handleClick} onChange={this.updateInputValue} />
-        <Greeting name={this.state.field} onChange={this.updateInputValue}/>
+        <SubjectInput name={this.state.subject} onClick={this.handleClick} onChange={this.updateInputValue} />
+        <Greeting name={this.state.subject} onChange={this.updateInputValue}/>
       </div>
     );
   }
