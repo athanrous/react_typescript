@@ -44,7 +44,7 @@ class Greeter extends React.Component<Props, State> {
   public handleClick() {
     this.setState({displaySubject: this.state.subject});
     axios.get('https://api.github.com/repos/Microsoft/TypeScript/pulls?state=open')
-    .then(response => this.setState({issueData: response.data}))
+    .then(response => this.setState({issueData: [response.data]}))
   }
 
   public handleSubjectChange(event) {
@@ -56,9 +56,8 @@ class Greeter extends React.Component<Props, State> {
       <div>
         <SubjectInput name={this.state.subject} onClick={this.handleClick} onChange={this.handleSubjectChange} />
         <Greeting name={this.state.displaySubject} />
-        <GitHub data={this.state.issueData}/>
+        <GitHub data={this.state.issueData} />
       </div>
-      
     );
   }
 }
@@ -77,7 +76,13 @@ function Greeting(props) {
 }
 
 function GitHub(props){
-  return <h1> Github {props.data[0]} </h1>
+  return (
+    <ul>
+    {props.data.map((issueElement) => {
+      return <li key={issueElement.toString()}>{issueElement}</li>;
+    })}
+  </ul>
+  )
 }
 
 export default Greeter;
