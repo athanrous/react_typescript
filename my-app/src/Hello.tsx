@@ -43,8 +43,13 @@ class Greeter extends React.Component<Props, State> {
 
   public handleClick() {
     this.setState({displaySubject: this.state.subject});
-    axios.get('https://api.github.com/repos/Microsoft/TypeScript/pulls?state=open')
-    .then(response => this.setState({issueData: [response.data]}))
+    // tslint:disable-next-line:no-consoles
+    console.log(this.state.subject)
+    axios.get('https://api.github.com/repos/Microsoft/TypeScript/issues?state=open')
+    .then(response => 
+      // tslint:disable-next-line:no-console
+      // console.log(response.data))
+    this.setState({issueData: response.data}))
   }
 
   public handleSubjectChange(event) {
@@ -79,7 +84,9 @@ function GitHub(props){
   return (
     <ul>
     {props.data.map((issueElement) => {
-      return <li key={issueElement.toString()}>{issueElement}</li>;
+      // tslint:disable-next-line:no-console
+      console.log(issueElement);
+      return <li key={issueElement.id.toString()}>{issueElement.url}</li>;
     })}
   </ul>
   )
