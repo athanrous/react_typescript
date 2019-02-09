@@ -1,3 +1,2 @@
-# react_typescript
-TypeScript React Starter Project
-Deprecated
+Goodbye Github!
+Hello Gitlab: https://gitlab.com/athanrous
